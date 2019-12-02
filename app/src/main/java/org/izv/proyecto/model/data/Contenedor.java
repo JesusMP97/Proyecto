@@ -1,9 +1,10 @@
 package org.izv.proyecto.model.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Contenedor {
+public class Contenedor implements Serializable {
 
     private List<CommandDetail> commandDetailList;
     private List<Contenedor> containerList;
@@ -74,7 +75,7 @@ public class Contenedor {
         return this;
     }
 
-    public static class CommandDetail {
+    public static class CommandDetail implements Serializable{
         private Comanda command;
         private Producto product;
 

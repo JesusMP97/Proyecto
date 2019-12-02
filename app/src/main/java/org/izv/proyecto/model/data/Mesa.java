@@ -6,6 +6,14 @@ public class Mesa implements Serializable {
     private long id, numero, estado, capacidad;
     private String zona;
 
+    public Mesa(long id, long numero, long estado, long capacidad, String zona) {                   // + Jesus
+        this.id = id;
+        this.numero = numero;
+        this.estado = estado;
+        this.capacidad = capacidad;
+        this.zona = zona;
+    }                                                                                               // - Jesus
+
     public long getId() {
         return id;
     }

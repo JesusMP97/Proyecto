@@ -1,32 +1,48 @@
 package org.izv.proyecto;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import org.izv.proyecto.model.data.Contenedor;
 import org.izv.proyecto.model.data.Factura;
+import org.izv.proyecto.view.adapter.SeeCommandAdapter;
 
 public class SeeCommandActivity extends AppCompatActivity {
 
-    TextView tvTable;
-    Factura factura;
+    RecyclerView recyclerView;
+    Contenedor contenedor;
+    SeeCommandAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_see_command);
 
+        Intent intent = this.getIntent();
+        contenedor = (Contenedor) intent.getSerializableExtra("contenedor");
+
         initComponents();
         initEvents();
     }
 
     private void initComponents() {
-        tvTable = findViewById(R.id.tvTableSeeCommand);
+        recyclerView = findViewById(R.id.rvSeeCommand);
+        initAdapter();
+    }
 
+    private void initAdapter() {
+        adapter = new SeeCommandAdapter(contenedor.getCommandDetailList());
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(llm);
+        recyclerView.setAdapter(adapter);
     }
 
     private void initEvents() {
-        //factura = getIntent().getExtras("selectedFactura");
+        String nombre = contenedor.getCommandDetail().get(0).getProduct().getNombre();
     }
 }

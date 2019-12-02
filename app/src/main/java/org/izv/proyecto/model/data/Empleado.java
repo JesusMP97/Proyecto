@@ -1,6 +1,8 @@
 package org.izv.proyecto.model.data;
 
-public class Empleado {
+import java.io.Serializable;
+
+public class Empleado implements Serializable {
     private long id;
     private String login;
     private String clave;

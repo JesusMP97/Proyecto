@@ -1,9 +1,20 @@
 package org.izv.proyecto.model.data;
 
-public class Producto {
+import java.io.Serializable;
+
+public class Producto implements Serializable {
     private long id;
     private String nombre, destino, categoria, subcategoria;
     private float precio;
+
+    public Producto(long id, String nombre, String destino, String categoria, String subcategoria, float precio) {
+        this.id = id;
+        this.nombre = nombre;
+        this.destino = destino;
+        this.categoria = categoria;
+        this.subcategoria = subcategoria;
+        this.precio = precio;
+    }
 
     public long getId() {
         return id;

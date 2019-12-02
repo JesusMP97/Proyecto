@@ -8,6 +8,20 @@ public class Factura implements Serializable {
     private float total;
     private boolean selected;
 
+    public Factura(String horainicio, String horacierre, long id, long idmesa, long idempleadoinicio, long idempleadocierre, float total) { // + Jesus
+        this.horainicio = horainicio;
+        this.horacierre = horacierre;
+        this.id = id;
+        this.idmesa = idmesa;
+        this.idempleadoinicio = idempleadoinicio;
+        this.idempleadocierre = idempleadocierre;
+        this.total = total;
+        this.selected = false;
+    }                                                                                                                                       // - Jesus
+
+    public Factura() {
+    }
+
     public String getHorainicio() {
         return horainicio;
     }

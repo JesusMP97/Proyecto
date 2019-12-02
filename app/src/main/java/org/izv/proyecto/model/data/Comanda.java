@@ -1,8 +1,23 @@
 package org.izv.proyecto.model.data;
 
-public class Comanda {
+import java.io.Serializable;
+
+public class Comanda implements Serializable {
     private long id, idfactura, idproducto, idempleado, unidades, entregada;
     private float precio;
+
+    public Comanda(long id, long idfactura, long idproducto, long idempleado, long unidades, long entregada, float precio) {    // + Jesus
+        this.id = id;
+        this.idfactura = idfactura;
+        this.idproducto = idproducto;
+        this.idempleado = idempleado;
+        this.unidades = unidades;
+        this.entregada = entregada;
+        this.precio = precio;
+    }                                                                                                                           // - Jesus
+
+    public Comanda() {
+    }
 
     public long getId() {
         return id;

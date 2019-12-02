@@ -2,6 +2,7 @@ package org.izv.proyecto.view.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.ContextMenu;
@@ -21,12 +22,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.izv.proyecto.MainActivity;
 import org.izv.proyecto.R;
 import org.izv.proyecto.SeeCommandActivity;
+import org.izv.proyecto.model.data.Comanda;
+import org.izv.proyecto.model.data.Contenedor;
 import org.izv.proyecto.model.data.Factura;
 import org.izv.proyecto.model.data.Mesa;
+import org.izv.proyecto.model.data.Producto;
 import org.izv.proyecto.view.utils.CustomAnimation;
 import org.izv.proyecto.view.utils.CustomShape;
 import org.izv.proyecto.view.utils.Time;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -50,6 +55,30 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ItemHo
         this.context = context;
         inflater = LayoutInflater.from(context);
     }
+
+    public Contenedor testContenedor(){                                                             // + Jesus
+        Factura factura = new Factura("10:30", "11:00", 1, 1, 1, 1, 23.50f);
+        Mesa mesa = new Mesa(1, 1, 1, 4, "Interior");
+        List<Contenedor.CommandDetail> commandDetails = new ArrayList<>();
+
+        commandDetails.add(new Contenedor.CommandDetail(
+                new Comanda(1, 1, 1, 2, 2, 1, 8f),
+                new Producto(1, "Canelones", "Interior", "Menu", "Carne", 10f))
+        );
+
+        commandDetails.add(new Contenedor.CommandDetail(
+                new Comanda(2, 1, 2, 3, 3, 1, 8f),
+                new Producto(2, "Coca cola", "Interior", "Bebida", "Refresco", 4.5f))
+        );
+
+        commandDetails.add(new Contenedor.CommandDetail(
+                new Comanda(3, 1, 3, 2, 1, 0, 8f),
+                new Producto(3, "Calamares", "Interior", "Menu", "Pescado", 8f))
+        );
+
+        Contenedor contenedor = new Contenedor(factura, mesa, commandDetails);
+        return contenedor;
+    }                                                                                               // - Jesus
 
     @Override
     public Filter getFilter() {
@@ -81,8 +110,7 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ItemHo
                         onClickListener.onItemClick(position);
 
                     if(selectedItems.size() == 0){                                                  // + Jesus
-                        Intent intent = new Intent(context, SeeCommandActivity.class);
-                        intent.putExtra("selectedFactura", invoices.get(position));
+                        Intent intent = new Intent(context, SeeCommandActivity.class).putExtra("contenedor", (Serializable) testContenedor());
                         context.startActivity(intent);
                     }                                                                               // - Jesus
                 }
