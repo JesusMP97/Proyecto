@@ -61,11 +61,14 @@ public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.ItemHo
         Mesa mesa = new Mesa(1, 1, 1, 4, "Interior");
         List<Contenedor.CommandDetail> commandDetails = new ArrayList<>();
 
-        commandDetails.add(new Contenedor.CommandDetail(
-                new Comanda(1, 1, 1, 2, 2, 1, 8f),
-                new Producto(1, "Canelones", "Interior", "Menu", "Carne", 10f))
-        );
+        for (int i = 0; i < 30; i++) {
 
+            commandDetails.add(new Contenedor.CommandDetail(
+                    new Comanda(1, 1, 1, 2, 2, 1, 8f),
+                    new Producto(1, "Canelones", "Interior", "Menu", "Carne", 10f))
+            );
+
+        }
         commandDetails.add(new Contenedor.CommandDetail(
                 new Comanda(2, 1, 2, 3, 3, 1, 8f),
                 new Producto(2, "Coca cola", "Interior", "Bebida", "Refresco", 4.5f))

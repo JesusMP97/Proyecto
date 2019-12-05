@@ -8,12 +8,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Guideline;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -292,7 +290,7 @@ public class CommandActivity extends AppCompatActivity {
         clContainter = findViewById(R.id.clContainter);
         glX = findViewById(R.id.glX);
         rvProductList = findViewById(R.id.rvProductList);
-        rvCommandList = findViewById(R.id.rvProductValueList);
+        rvCommandList = findViewById(R.id.rvSCItems);
         tvCommandTotal = findViewById(R.id.tvCommandTotal);
         rvProductList.setLayoutManager(new LinearLayoutManager(this));
         rvCommandList.setLayoutManager(new LinearLayoutManager(this));

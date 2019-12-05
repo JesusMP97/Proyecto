@@ -127,7 +127,7 @@
             app:layout_constraintTop_toBottomOf="@+id/vwSeparator">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvProductValueList"
+                android:id="@+id/rvSCItems"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </androidx.core.widget.NestedScrollView>

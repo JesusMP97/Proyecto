@@ -9,9 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.izv.proyecto.R;
-import org.izv.proyecto.model.data.Comanda;
 import org.izv.proyecto.model.data.Contenedor;
-import org.izv.proyecto.model.data.Producto;
 
 import java.util.List;
 
@@ -33,8 +31,9 @@ public class SeeCommandAdapter extends RecyclerView.Adapter<SeeCommandAdapter.Se
 
     @Override
     public void onBindViewHolder(@NonNull SeeCommandViewHolder holder, int position) {
-        holder.tvCommandNumber.setText("Comanda " + comandas.get(position).getCommand().getId());
-        holder.tvProducto.setText(comandasToString());
+        holder.tvQuantity.setText(comandas.get(position).getCommand().getUnidades() + "");
+        holder.tvProducto.setText(comandas.get(position).getProduct().getNombre());
+        holder.tvTotal.setText(comandas.get(position).getProduct().getPrecio() * comandas.get(position).getCommand().getUnidades() + "");
     }
 
     public String comandasToString(){
@@ -63,12 +62,13 @@ public class SeeCommandAdapter extends RecyclerView.Adapter<SeeCommandAdapter.Se
 
     class SeeCommandViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvCommandNumber, tvProducto;
+        TextView tvQuantity, tvProducto, tvTotal;
 
         public SeeCommandViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.tvCommandNumber = itemView.findViewById(R.id.tvSCNumeroComanda);
-            this.tvProducto = itemView.findViewById(R.id.tvSCProductos);
+            this.tvQuantity = itemView.findViewById(R.id.tvSCQuantity);
+            this.tvProducto = itemView.findViewById(R.id.tvSCItem);
+            this.tvTotal = itemView.findViewById(R.id.tvSCTotalPrice);
         }
 
     }
